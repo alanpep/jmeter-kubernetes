@@ -1,3 +1,16 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: jmeter-load-test
+  labels:
+    app: influxdb-jmeter
+data:
+  load_test: |
+    #!/bin/bash
+    # Script to to invoke JMeter test script with the slave pod IP addresses
+    # Example: ./load_test jmeter-test-script.jmx
+    /jmeter/apache-jmeter-*/bin/jmeter -n -t $1 -Dserver.rmi.ssl.disable=true -R `getent ahostsv4 jmeter-slaves-svc | cut -d' ' -f1 | sort -u | awk -v ORS=, '{print $1}' | sed 's/,$//'`
+---
 apiVersion: apps/v1beta2 # for versions before 1.9.0 use apps/v1beta2
 kind: Deployment
 metadata:
@@ -27,6 +40,6 @@ spec:
         ports:
         - containerPort: 60000
       volumes:
-      - name: loadtest 
+      - name: loadtest
         configMap:
          name: jmeter-load-test

@@ -1,23 +1,25 @@
-# Jmeter Cluster Support for Kubernetes and OpenShift
+# JMeter Cluster Support for Kubernetes and OpenShift
+Please read [Load Testing JMeter On Kubernetes](https://goo.gl/mkoX9E) on Medium.
 
-## Prerequisits
+## Prerequisites
 
-Kubernetes > 1.8
+Kubernetes > v1.8
 
-OpenShift version > 3.5
+OpenShift > v3.5
 
-N.B.: this implementation was tested on Kubernetes 1.9, 1.10, and 1.11 and OpenShift 3.5 and 3.10 (minishift)
+## Quickstart
+### Deploy JMeter, InfluxDB, and Grafana
+```
+export NAMESPACE=<new-kubernetes-namespace>
 
-## TL;DR
-
-```bash
-./dockerimages.sh
-./jmeter_cluster_create.sh
-./dashboard.sh
-./start_test.sh
+kubectl create ns $NAMESPACE
+kubectl apply -f kube/ -n $NAMESPACE
+kubectl get all -n $NAMESPACE
 ```
 
-Please follow the guide "Load Testing Jmeter On Kubernetes" on our medium blog post:
+### Cleanup JMeter, InfluxDB, and Grafana
+`kubectl delete -f kube -n <new-kubernetes-namespace>`
 
-https://goo.gl/mkoX9E
-
+## Notes
+### Deployment with `oc`
+`oc` is the OpenShift Client.
