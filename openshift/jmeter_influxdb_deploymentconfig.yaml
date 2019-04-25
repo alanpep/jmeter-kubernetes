@@ -2,12 +2,12 @@ apiVersion: v1
 kind: DeploymentConfig
 metadata:
   labels:
-    app: influxdb-jmeter
-  name: influxdb-jmeter
+    app: jmeter-influxdb
+  name: jmeter-influxdb
 spec:
   replicas: 1
   selector:
-    app: influxdb-jmeter
+    app: jmeter-influxdb
   strategy:
     activeDeadlineSeconds: 21600
     resources: {}
@@ -22,13 +22,13 @@ spec:
     metadata:
       creationTimestamp: null
       labels:
-        app: influxdb-jmeter
+        app: jmeter-influxdb
     spec:
       containers:
       - image: cloudssky/influxdb:latest
         name: influxdb
         imagePullPolicy: Always
-        name: influxdb-jmeter
+        name: jmeter-influxdb
         volumeMounts:
           - name: config-volume
             mountPath: /etc/influxdb

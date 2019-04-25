@@ -1,18 +1,18 @@
 apiVersion: v1
 kind: DeploymentConfig
 metadata:
-  name: influxdb-jmeter
+  name: jmeter-influxdb
   labels:
-    app: influxdb-jmeter
+    app: jmeter-influxdb
 spec:
   replicas: "1"
   selector:
     matchLabels:
-      app: influxdb-jmeter
+      app: jmeter-influxdb
   template:
     metadata:
       labels:
-        app: influxdb-jmeter
+        app: jmeter-influxdb
     spec:
       containers:
         - image: influxdb

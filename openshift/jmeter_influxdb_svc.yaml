@@ -3,7 +3,7 @@ kind: Service
 metadata:
   name: jmeter-influxdb
   labels:
-    app: influxdb-jmeter
+    app: jmeter-influxdb
 spec:
   ports:
     - port: 8083
@@ -16,4 +16,4 @@ spec:
       name: graphite
       targetPort: 2003
   selector:
-    app: influxdb-jmeter
+    app: jmeter-influxdb

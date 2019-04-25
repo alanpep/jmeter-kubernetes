@@ -12,7 +12,7 @@ Please read [Load Testing JMeter On Kubernetes](https://goo.gl/mkoX9E) on Medium
    ```
 2. Create the JMeter database in InfluxDB:
 
-   `kubectl exec -it $(kubectl get po -n $NAMESPACE | grep influxdb-jmeter | awk '{print $1}') -- influx -execute 'CREATE DATABASE jmeter'`
+   `kubectl exec -it $(kubectl get po -n $NAMESPACE | grep jmeter-influxdb | awk '{print $1}') -- influx -execute 'CREATE DATABASE jmeter'`
 
 3. Create the InfluxDB data source in Grafana
    ```
@@ -45,3 +45,4 @@ To stop a test:
 `kubectl delete -f kube -n $NAMESPACE`
 
 ## Notes
+* Investigate tuning the JVM heap of `jmeter-master` pod

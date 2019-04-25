@@ -3,7 +3,7 @@ kind: ConfigMap
 metadata:
   name: influxdb-config
   labels:
-    app: influxdb-jmeter
+    app: jmeter-influxdb
 data:
   influxdb.conf: |
     [meta]

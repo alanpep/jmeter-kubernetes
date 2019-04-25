@@ -3,17 +3,17 @@ kind: DeploymentConfig
 metadata:
     creationTimestamp: null
     labels:
-      app: influxdb-jmeter
+      app: jmeter-influxdb
     name: influxdb  
 spec:
     replicas: 1
     selector:
-      app: influxdb-jmeter
+      app: jmeter-influxdb
     template:
       metadata:
         creationTimestamp: null
         labels:
-          app: influxdb-jmeter
+          app: jmeter-influxdb
       spec:
         containers:
         - env:

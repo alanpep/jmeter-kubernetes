@@ -10,7 +10,7 @@ working_dir=`pwd`
 echo "Creating Influxdb jmeter Database"
 
 ##Wait until Influxdb Deployment is up and running
-##influxdb_status=`oc get po -n $tenant | grep influxdb-jmeter | awk '{print $2}' | grep Running
+##influxdb_status=`oc get po -n $tenant | grep jmeter-influxdb | awk '{print $2}' | grep Running
 
 influxdb_pod=`oc get pod | grep influxdb | awk '{print $1}'`
 oc exec -ti $influxdb_pod -- influx -execute 'CREATE DATABASE jmeter'
@@ -36,6 +36,6 @@ master_pod=`oc get pod | grep jmeter-master | awk '{print $1}'`
 
 # oc exec -it $master_pod -- /bin/bash -- chmod 755 /jmeter/load_test
 
-##oc cp $working_dir/influxdb-jmeter-datasource.json -n $tenant $grafana_pod:/influxdb-jmeter-datasource.json
+##oc cp $working_dir/jmeter-influxdb-datasource.json -n $tenant $grafana_pod:/jmeter-influxdb-datasource.json
 
 oc exec -it $grafana_pod -- curl 'http://admin:admin@127.0.0.1:3000/api/datasources' -X POST -H 'Content-Type: application/json;charset=UTF-8' --data-binary '{"name":"jmeterdb","type":"influxdb","url":"http://jmeter-influxdb:8086","access":"proxy","isDefault":true,"database":"jmeter","user":"admin","password":"admin"}'
