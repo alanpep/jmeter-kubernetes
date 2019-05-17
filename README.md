@@ -20,7 +20,7 @@ Kubernetes v1.8+ or OpenShift v3.5+ is required.
    ```
    export JMETER_GRAFANA_POD=$(kubectl get po -n $NAMESPACE | grep jmeter-grafana | awk '{print $1}')
 
-   kubectl exec -it JMETER_GRAFANA_POD -- curl 'http://admin:admin@127.0.0.1:3000/api/datasources' -X POST -H 'Content-Type: application/json;charset=UTF-8' --data-binary '{"name":"jmeterdb","type":"influxdb","url":"http://jmeter-influxdb:8086","access":"proxy","isDefault":true,"database":"jmeter","user":"admin","password":"admin"}'
+   kubectl exec -it $JMETER_GRAFANA_POD -- curl 'http://admin:admin@127.0.0.1:3000/api/datasources' -X POST -H 'Content-Type: application/json;charset=UTF-8' --data-binary '{"name":"jmeterdb","type":"influxdb","url":"http://jmeter-influxdb:8086","access":"proxy","isDefault":true,"database":"jmeter","user":"admin","password":"admin"}'
    ```
    Output:
    ```
@@ -39,11 +39,11 @@ Kubernetes v1.8+ or OpenShift v3.5+ is required.
 Copy the JMX file to the `jmeter-master` pod and initiate the test using the `/jmeter/load_test` script:
 ```
 kubectl cp cloudssky.jmx -n $NAMESPACE $JMETER_MASTER_POD:/tmp/tests.jmx
-kubectl exec -n $NAMESPACE $JMETER_MASTER_POD /tmp/load_test tests.jmx
+kubectl exec -n $NAMESPACE $JMETER_MASTER_POD /tmp/load_test /tmp/tests.jmx
 ```
 To stop a test:
 
-`kubectl exec -n $NAMESPACE $JMETER_MASTER_POD /jmeter/apache-jmeter-4.0/bin/stoptest.sh`
+`kubectl exec -n $NAMESPACE $JMETER_MASTER_POD /jmeter/apache-jmeter-5.0/bin/stoptest.sh`
 
 ## Links
 * [Load Testing JMeter On Kubernetes](https://goo.gl/mkoX9E)
