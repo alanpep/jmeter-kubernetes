@@ -1,4 +1,4 @@
-# JMeter Cluster Support for Kubernetes and OpenShift
+# JMeter in Kubernetes and OpenShift
 
 Kubernetes v1.8+ or OpenShift v3.5+ is required.
 
