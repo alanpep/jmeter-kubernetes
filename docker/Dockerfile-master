@@ -1,4 +1,4 @@
-FROM kubernautslabs/jmeter-base:latest
+FROM quay.io/alanpep/jmeter511:latest
 MAINTAINER Kubernauts-lab
 		
 EXPOSE 60000
