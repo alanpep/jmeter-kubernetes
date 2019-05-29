@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<jmeterTestPlan version="1.2" properties="5.0" jmeter="5.1.1 r1855137">
+<jmeterTestPlan version="1.2" properties="5.0" jmeter="5.1 r1853635">
   <hashTree>
     <TestPlan guiclass="TestPlanGui" testclass="TestPlan" testname="cloudssky.jmx" enabled="true">
       <stringProp name="TestPlan.comments">This test plan was created by the BlazeMeter converter v.1.1.307. Please contact support@blazemeter.com for further support.</stringProp>
@@ -230,7 +230,7 @@
               </elementProp>
               <elementProp name="es.host" elementType="Argument">
                 <stringProp name="Argument.name">es.host</stringProp>
-                <stringProp name="Argument.value"></stringProp>
+                <stringProp name="Argument.value">ec2-3-86-26-100.compute-1.amazonaws.com</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
               </elementProp>
               <elementProp name="es.port" elementType="Argument">
@@ -240,7 +240,7 @@
               </elementProp>
               <elementProp name="es.index" elementType="Argument">
                 <stringProp name="Argument.name">es.index</stringProp>
-                <stringProp name="Argument.value"></stringProp>
+                <stringProp name="Argument.value">alan_test</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
               </elementProp>
               <elementProp name="es.timestamp" elementType="Argument">
